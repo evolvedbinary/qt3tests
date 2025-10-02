@@ -398,7 +398,7 @@ return
     <description> use case 5: Single exponential smoothing (3 last values and smoothing factor 0.2) </description>
     <created by="Matthias Brantner" on="2011-07-28"/>
     <modified by="Michael Kay" on="2017-03-17" change="avoid assert-xml for non-XML results"/>
-    <modified by="Michael Kay" on="2025-09-19" change="express results as xs:double rather than xs:decimal"/>
+    <modified by="Michael Kay" on="2025-09-22" change="expected results are xs:double"/>
     <environment ref="WindowingUseCases04"/>
     <dependency type="spec" value="XQ30+"/>
     <test><![CDATA[

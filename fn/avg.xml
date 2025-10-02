@@ -1104,9 +1104,13 @@
    <test-case name="fn-avg-mix-args-018">
       <description> arg: seq of float </description>
       <created by="Pulkita Tyagi" on="2006-01-13"/>
+      <modified by="Michael Kay" on="2025-10-02" change="more precise assertion"/>
       <test>fn:avg(( (xs:float("1.01"))))</test>
       <result>
-         <assert-eq>1.01</assert-eq>
+         <all-of>
+            <assert-eq>xs:float(1.01)</assert-eq>
+            <assert-type>xs:float</assert-type>
+         </all-of>
       </result>
    </test-case>
 
