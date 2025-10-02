@@ -2025,6 +2025,10 @@
         <description>serialize test - html method</description>
         <created by="Michael Kay, Saxonica" on="2018-04-16"/>
         <modified by="Zachary Dean" on="2019-08-27" change="Also allow lowercase html in DOCTYPE"/>
+        <modified by="Michael Kay" on="2025-10-01" 
+            change="Although the 3.1 serialization spec does not technically permit it,
+                   it is reasonable for a 3.1 processor to generate the HTML5 meta element
+                   in a way that conforms with the current HTML5 specification (meta/@charset)"/>
         <dependency type="spec" value="XQ31+"/>
         <test><![CDATA[
             let $doc := <html><head/><body><p>Hello World!</p></body></html>
@@ -2037,7 +2041,10 @@
         <result>
             <all-of>
                 <assert>matches($result,'DOCTYPE (HTML|html)')</assert>
-                <assert>matches($result,'&lt;meta http-equiv')</assert>
+                <any-of>
+                    <assert>matches($result,'&lt;meta http-equiv')</assert>
+                    <assert>matches($result,'&lt;meta charset')</assert>
+                </any-of>
             </all-of>
         </result>
     </test-case>
@@ -2045,6 +2052,10 @@
         <description>serialize test - html method</description>
         <created by="Debbie Lockett" on="2019-11-19"/>
         <modified by="Debbie Lockett" on="2020-07-09" change="Source should be XML 1.0"/>
+        <modified by="Michael Kay" on="2025-10-01" 
+            change="Although the 3.1 serialization spec does not technically permit it,
+                   it is reasonable for a 3.1 processor to generate the HTML5 meta element
+                   in a way that conforms with the current HTML5 specification (meta/@charset)"/>
         <environment>        
             <source role="." file="serialize/serialize-html-001-src.xml">
                 <description>File to be serialized</description>
@@ -2056,7 +2067,10 @@
         <result>
             <all-of>
                 <assert>matches($result,'DOCTYPE (HTML|html)')</assert>
-                <assert>matches($result,'&lt;meta http-equiv')</assert>
+                <any-of>
+                    <assert>matches($result,'&lt;meta http-equiv')</assert>
+                    <assert>matches($result,'&lt;meta charset')</assert>
+                </any-of>
             </all-of>
         </result>
     </test-case>
@@ -2065,6 +2079,10 @@
         <description>serialize test - html method - html-version as xs:integer</description>
         <created by="Michael Kay, Saxonica" on="2018-05-14"/>
         <modified by="Zachary Dean" on="2019-08-27" change="Also allow lowercase html in DOCTYPE"/>
+        <modified by="Michael Kay" on="2025-10-01" 
+            change="Although the 3.1 serialization spec does not technically permit it,
+                   it is reasonable for a 3.1 processor to generate the HTML5 meta element
+                   in a way that conforms with the current HTML5 specification (meta/@charset)"/>
         <dependency type="spec" value="XQ31+"/>
         <test><![CDATA[
             let $doc := <html><head/><body><p>Hello World!</p></body></html>
@@ -2077,7 +2095,10 @@
         <result>
             <all-of>
                 <assert>matches($result,'DOCTYPE (HTML|html)')</assert>
-                <assert>matches($result,'&lt;meta http-equiv')</assert>
+                <any-of>
+                    <assert>matches($result,'&lt;meta http-equiv')</assert>
+                    <assert>matches($result,'&lt;meta charset')</assert>
+                </any-of>
             </all-of>
         </result>
     </test-case>
@@ -2085,6 +2106,10 @@
         <description>serialize test - html method - html-version as xs:integer</description>
         <created by="Debbie Lockett" on="2019-11-19"/>
         <modified by="Debbie Lockett" on="2020-07-09" change="Source should be XML 1.0"/>
+        <modified by="Michael Kay" on="2025-10-01" 
+            change="Although the 3.1 serialization spec does not technically permit it,
+                   it is reasonable for a 3.1 processor to generate the HTML5 meta element
+                   in a way that conforms with the current HTML5 specification (meta/@charset)"/>
         <environment>        
             <source role="." file="serialize/serialize-html-001-src.xml">
                 <description>File to be serialized</description>
@@ -2096,7 +2121,10 @@
         <result>
             <all-of>
                 <assert>matches($result,'DOCTYPE (HTML|html)')</assert>
-                <assert>matches($result,'&lt;meta http-equiv')</assert>
+                <any-of>
+                    <assert>matches($result,'&lt;meta http-equiv')</assert>
+                    <assert>matches($result,'&lt;meta charset')</assert>
+                </any-of>
             </all-of>
         </result>
     </test-case>
