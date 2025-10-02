@@ -262,12 +262,23 @@
          "When tokenizing, the longest possible match that is consistent with the EBNF is used."
          After a lookup operator, an NCName is consistent with the EBNF but a QName (containing a colon)
          is not, so the tokenizer should extract the NCName "a".
+         
+         The cited rule has been subject to some controversy as to its exact meaning (for example
+         the spec is explicit that `10 div3` is a syntax error, whereas the rule could be interpreted
+         as meaning it should be parsed as `10 div 3`). In 4.0 the rule
+         has been abolished so that tokenization is entirely independent of the syntactic
+         context. I'm therefore changing the test to allow a syntax error as an alternative
+         result.
       </description>
       <created by="Michael Kay" on="2016-02-08"/>
+      <modified by="Michael Kay" on="2025-09-19" change="allow syntax error as alternative result"/>
       <environment ref="map"/>
       <test>let $m := map{'a':1} return map:size(map{$m?a:true()})</test>
       <result>
-         <assert-eq>1</assert-eq>
+         <any-of>
+            <assert-eq>1</assert-eq>
+            <error code="XPST0003"/>
+         </any-of>
       </result>
    </test-case>
    
